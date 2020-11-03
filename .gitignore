@@ -1,0 +1,10 @@
+application/config/config.php
+application/config/database.php
+adm.php
+.htaccess
+.DS_Store
+update-changelog.json
+dev.php
+error_log
+application/controllers/untitled
+upload/outlet/.DS_Store
