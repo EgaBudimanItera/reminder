@@ -11,6 +11,7 @@ class Driver extends CI_Controller
             echo'<script>window.location.href="'.base_url().'";</script>';
         }   
         $this->load->model('M_Api');
+        // as
     }
 
     public function index()
