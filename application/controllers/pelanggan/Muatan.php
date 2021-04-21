@@ -1,7 +1,7 @@
 <?php
 defined('BASEPATH') or exit('No direct script access allowed');
 
-class Kendaraan extends CI_Controller
+class Muatan extends CI_Controller
 {
     public function __construct()
     {
@@ -13,44 +13,36 @@ class Kendaraan extends CI_Controller
         $this->load->model('M_Api');
     }
 
-    public function index()
-    {
-        $query = $this->db->query('SELECT * from tb_kendaraan JOIN tb_driver on tb_kendaraan.id_driver=tb_driver.id_driver');
-        $driver = $this->db->get('tb_driver');
-
-        $data = array(
-			'page' => 'kendaraan/index',
-			'link' => 'kendaraan',
-			'script' => 'kendaraan/script',
-            'data' => $query,
-            'ref_driver' => $driver,
-        );
-        
-		$this->load->view('template/wrapper', $data);
+    public function index(){
+        redirect('/pelanggan/pelanggan');
     }
 
     public function store(){
+        
         $this->db->trans_begin();
         $data_to_save = array(
-            'id_driver'=>$this->input->post('id_driver', true),
-            'merk_kendaraan' => $this->input->post('merk_kendaraan', true), 
-            'tahun' => $this->input->post('tahun', true), 
-            'nomor_plat' => $this->input->post('nomor_plat', true), 
+            'id_pelanggan' => $this->input->post('id_pelanggan', true), 
+            'dari' => $this->input->post('dari', true), 
+            'tujuan' => $this->input->post('tujuan', true), 
+            'muatan' => $this->input->post('muatan', true), 
+            'id_satuan' => $this->input->post('id_satuan', true),
+            'tarif' => $this->input->post('tarif', true),
+            'keterangan' => $this->input->post('keterangan', true),
         );
-        $simpan = $this->db->insert('tb_kendaraan', $data_to_save);
+        $simpan = $this->db->insert('tb_det_muatan', $data_to_save);
         
         if ($this->db->trans_status() === FALSE){
             $this->db->trans_rollback();
             $return = array(
 				'status' => 'failed',
-				'text' => '<div class="alert alert-danger">Data gagal Disimpan</div>'
+				'text' => '<div class="alert alert-danger">Data gagal ditambahkan</div>'
 			);
 			echo json_encode($return);
         }else {
             $this->db->trans_commit();
             $return = array(
 				'status' => 'success',
-				'text' => '<div class="alert alert-success">Data berhasil Disimpan</div>'
+				'text' => '<div class="alert alert-success">Data berhasil ditambahkan</div>'
 			);
 			echo json_encode($return);
         }
@@ -59,9 +51,9 @@ class Kendaraan extends CI_Controller
 
     public function get(){
         $id = $this->input->post('id', true);
-        $this->db->from('tb_kendaraan');
-        $this->db->join('tb_driver','tb_driver.id_driver=tb_kendaraan.id_driver');
-        $this->db->where(array('tb_kendaraan.id_kendaraan' => $id));
+        $this->db->from('tb_det_muatan');
+        $this->db->JOIN('tb_satuan','tb_satuan.id_satuan=tb_det_muatan.id_satuan');
+        $this->db->where(array('tb_det_muatan.id_muatan' => $id));
         $get = $this->db->get();
         echo json_encode($get->row());
     }
@@ -69,12 +61,15 @@ class Kendaraan extends CI_Controller
     public function update(){
         $this->db->trans_begin();
         $data_to_save = array(
-            'id_driver'=>$this->input->post('id_driver', true),
-            'merk_kendaraan' => $this->input->post('merk_kendaraan', true), 
-            'tahun' => $this->input->post('tahun', true), 
-            'nomor_plat' => $this->input->post('nomor_plat', true), 
+            'id_pelanggan' => $this->input->post('id_pelanggan', true), 
+            'dari' => $this->input->post('dari', true), 
+            'tujuan' => $this->input->post('tujuan', true), 
+            'muatan' => $this->input->post('muatan', true), 
+            'id_satuan' => $this->input->post('id_satuan', true),
+            'tarif' => $this->input->post('tarif', true),
+            'keterangan' => $this->input->post('keterangan', true), 
         );
-        $simpan = $this->db->update('tb_kendaraan', $data_to_save, array('id_kendaraan' => $this->input->post('id_kendaraan', true)));
+        $simpan = $this->db->update('tb_det_muatan', $data_to_save, array('id_muatan' => $this->input->post('id_muatan', true)));
         
         if ($this->db->trans_status() === FALSE){
             $this->db->trans_rollback();
@@ -96,8 +91,8 @@ class Kendaraan extends CI_Controller
 
     public function remove(){
         $this->db->trans_begin();
-        $id_kendaraan = $this->input->post('id', true);
-        $hapus = $this->db->delete('tb_kendaraan', array('id_kendaraan' => $id_kendaraan));
+        $id_muatan = $this->input->post('id', true);
+        $hapus = $this->db->delete('tb_det_muatan', array('id_muatan' => $id_muatan));
         
         if ($this->db->trans_status() === FALSE){
             $this->db->trans_rollback();

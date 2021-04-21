@@ -128,18 +128,21 @@ class Pelanggan extends CI_Controller
         }
     }
 
-    public function detail($id_pelanggan){
+    public function detailmuatan($id_pelanggan){
         //$id_presensi = decrypt_param($id_presensi);
-        $this->db->from('tb_pelanggan');        
-        $this->db->join('tb_user', 'tb_user.id_user = tb_pelanggan.created_by');
-        $this->db->where(array('tb_pelanggan.id_pelanggan' => $id_pelanggan));
+        $this->db->from('tb_det_muatan');        
+        $this->db->join('tb_pelanggan', 'tb_det_muatan.id_pelanggan = tb_pelanggan.id_pelanggan');
+        $this->db->join('tb_satuan', 'tb_det_muatan.id_satuan = tb_satuan.id_satuan');
+        $this->db->where(array('tb_det_muatan.id_pelanggan' => $id_pelanggan));
         $query = $this->db->get();
-        
+        $satuan=$this->db->get('tb_satuan');
         $data = array(
-             'page' => 'pelanggan/detail',
+             'page' => 'pelanggan/detailmuatan',
              'link' => 'pelanggan',
              'script' => 'pelanggan/script',
-             'data' => $query,             
+             'data' => $query, 
+             'satuan'=>$satuan,    
+             'pelanggan'=>$id_pelanggan,        
          );
          $this->load->view('template/wrapper', $data);
     }

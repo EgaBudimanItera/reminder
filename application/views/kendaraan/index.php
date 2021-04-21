@@ -17,6 +17,7 @@
 								<td>Nama Kendaraan</td>
 								<td>Nama Driver</td>
 								<td>Tahun</td>
+								<td>Plat Nomor</td>
 								<td>Aksi</td>
 							</tr>
 						</thead>
@@ -27,6 +28,7 @@
 								<td><?=$row_data->merk_kendaraan?></td>
 								<td><?=$row_data->nama_driver?></td>
 								<td><?=$row_data->tahun?></td>
+								<td><?=$row_data->nomor_plat?></td>
 								<td>
 									<button class="btn btn-info btn-edit" id="<?=$row_data->id_kendaraan?>"><i class="fa fa-edit"></i> Edit</button>
 									<!-- <a href="<?=base_url()?>kendaraan/kendaraan/detail/<?=$row_data->id_kendaraan?>" class="btn btn-warning" id="<?=$row_data->id_kendaraan?>"><i class="fa fa-eye"></i> Detail</a> -->
@@ -75,7 +77,10 @@
 				<label for="">Tahun Kendaraan:</label>
 				<input type="number" name="tahun" id="tahun" class="form-control" required>
 			</div>
-			
+			<div class="form-group">
+				<label for="">Plat Nomor:</label>
+				<input type="text" name="nomor_plat" id="nomor_plat" class="form-control" required>
+			</div>
 			<div class="notif"></div>
 		</div>
 		<div class="modal-footer bg-whitesmoke br">

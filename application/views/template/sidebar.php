@@ -21,7 +21,7 @@
           <a href="#" class="nav-link has-dropdown"><i class="fas fa-archive"></i><span>Produk</span></a>
           <ul class="dropdown-menu">
             <li class="<?=$link=='setting_satuan'? 'active':''?>"><a class="nav-link" href="<?=base_url()?>produk/satuan/satuan">Setting Satuan</a></li>
-            <li class="<?=$link=='setting_kategori'? 'active':''?>"><a class="nav-link" href="<?=base_url()?>produk/kategori/kategori">Setting Kategori</a></li>
+            <!-- <li class="<?=$link=='setting_kategori'? 'active':''?>"><a class="nav-link" href="<?=base_url()?>produk/kategori/kategori">Setting Kategori</a></li> -->
             
             <li class="<?=$link=='tambah_produk'? 'active':''?>"><a class="nav-link" href="<?=base_url()?>produk/produk">Tambah Produk</a></li>
             
@@ -37,11 +37,12 @@
             
           </ul>
         </li>
-        <li class="nav-item dropdown <?=$link == 'Order Produk'||$link == 'Laporan Penjualan'? 'active':''?>">
-          <a href="#" class="nav-link has-dropdown"><i class="fas fa-cart-plus"></i><span>Penjualan </span></a>
+        <li class="nav-item dropdown <?=$link == 'DO'||$link == 'Invoice'||$link == 'Print DO'? 'active':''?>">
+          <a href="#" class="nav-link has-dropdown"><i class="fas fa-cart-plus"></i><span>Transaksi </span></a>
           <ul class="dropdown-menu">
-            <li class="<?=$link=='Order Produk'? 'active':''?>"><a class="nav-link" href="<?=base_url()?>order/order">Order Penjualan</a></li>
-            <li class="<?=$link=='Laporan Penjualan'? 'active':''?>"><a class="nav-link" href="<?=base_url()?>laporan/penjualan">Laporan Penjualan</a></li>
+            <li class="<?=$link=='DO'? 'active':''?>"><a class="nav-link" href="<?=base_url()?>transaksi/delivery">DO</a></li>
+            <li class="<?=$link=='Invoice'? 'active':''?>"><a class="nav-link" href="<?=base_url()?>transaksi/invoice">Invoice</a></li>
+            <li class="<?=$link=='Print DO'? 'active':''?>"><a class="nav-link" href="<?=base_url()?>laporan/penjualan">Cetak DO</a></li>
           </ul>
         </li>
       <div class="mt-4 mb-4 p-3 hide-sidebar-mini">

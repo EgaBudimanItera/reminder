@@ -33,7 +33,7 @@
 								
 								<td>
 									<button class="btn btn-info btn-edit" id="<?=$row_data->id_pelanggan?>"><i class="fa fa-edit"></i> Edit</button>
-									<!-- <a href="<?=base_url()?>pelanggan/pelanggan/detail/<?=$row_data->id_pelanggan?>" class="btn btn-warning" id="<?=$row_data->id_pelanggan?>"><i class="fa fa-eye"></i> Detail</a> -->
+									<a href="<?=base_url()?>pelanggan/pelanggan/detailmuatan/<?=$row_data->id_pelanggan?>" class="btn btn-warning" id="<?=$row_data->id_pelanggan?>"><i class="fa fa-eye"></i> Muatan</a>
 									<button class="btn btn-danger btn-hapus" id="<?=$row_data->id_pelanggan?>"><i class="fa fa-trash"></i> Hapus</button>
 									
 								</td>

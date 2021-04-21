@@ -68,6 +68,27 @@
 		return $hours . " Jam, ".$minutes. " Menit";
 	}
 
+	function get_total($id='',$id_pelanggan=''){
+		$CI=& get_instance();
+		// $cek_wilayah = $CI->db->get_where('wilayah', array('id_wil' => $id));
+		$cek_do=$CI->db	->select('tb_det_do.*,coalesce(sum(tarif*jumlah),0) as subtotal,tgl_do,no_do,tb_pelanggan.*,tb_kendaraan.*')
+						->from('tb_det_do')
+						->join('tb_do','tb_do.id_do=tb_det_do.id_do')
+						->join('tb_kendaraan','tb_do.id_kendaraan=tb_kendaraan.id_kendaraan')
+						->join('tb_pelanggan','tb_pelanggan.id_pelanggan=tb_do.id_pelanggan')
+						->where(array('tb_do.id_pelanggan'=>$id_pelanggan,'id_invoice'=>$id))
+						->group_by('id_invoice')
+						->get();
+
+		
+		if($cek_do->num_rows()>0){
+			$total=$cek_do->row()->subtotal;
+		}else{
+			$total=0;
+		}
+		
+		return $total;
+	}
 
 
 ?>

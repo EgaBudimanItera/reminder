@@ -26,6 +26,23 @@ class M_Api extends CI_Model {
       return $kodejadi;
     }
 
+    public function buatNomorDo(){
+      $this->db->select('RIGHT(no_do,10) as kode', FALSE);
+      $this->db->order_by('no_do','DESC');
+      $this->db->limit(1);
+      $query = $this->db->get('tb_do');
+      if($query->num_rows() <> 0){      
+        $data = $query->row();
+        $kode = intval($data->kode) + 1;
+      }
+      else {       
+        $kode = 1;
+      }
+      $kodemax = str_pad($kode, 10, "0", STR_PAD_LEFT);
+      $kodejadi = $kodemax;
+      return $kodejadi;
+    }
+
     public function buatKodeKategori(){
       $this->db->select('RIGHT(id_kategori,5) as kode', FALSE);
       
@@ -180,7 +197,26 @@ class M_Api extends CI_Model {
       $kodejadi = $bulantahun.$kodemax;
       return $kodejadi;
     }
-    
+    //order no faktur ega
+    public function buatNoInvoice(){
+      //IN 09 20 00001
+      $bulantahun=date('my');
+      $this->db->select('RIGHT(nomor_invoice,5) as kode', FALSE);
+      $this->db->like('nomor_invoice',$bulantahun);
+      $this->db->order_by('nomor_invoice','DESC');
+      $this->db->limit(1);
+      $query = $this->db->get('tb_invoice');
+      if($query->num_rows() <> 0){      
+        $data = $query->row();
+        $kode = intval($data->kode) + 1;
+      }
+      else {       
+        $kode = 1;
+      }
+      $kodemax = str_pad($kode, 5, "0", STR_PAD_LEFT);
+      $kodejadi = $bulantahun.$kodemax;
+      return $kodejadi;
+    }
     public function buatKodeFakturStok(){
       $this->db->select('RIGHT(id_stok_awal,5) as kode', FALSE);
       $this->db->order_by('id_stok_awal','DESC');
