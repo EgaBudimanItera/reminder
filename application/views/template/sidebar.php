@@ -37,12 +37,20 @@
             
           </ul>
         </li>
-        <li class="nav-item dropdown <?=$link == 'DO'||$link == 'Invoice'||$link == 'Print DO'? 'active':''?>">
+        <li class="nav-item dropdown <?=$link == 'DO'||$link == 'Invoice'? 'active':''?>">
           <a href="#" class="nav-link has-dropdown"><i class="fas fa-cart-plus"></i><span>Transaksi </span></a>
           <ul class="dropdown-menu">
             <li class="<?=$link=='DO'? 'active':''?>"><a class="nav-link" href="<?=base_url()?>transaksi/delivery">DO</a></li>
             <li class="<?=$link=='Invoice'? 'active':''?>"><a class="nav-link" href="<?=base_url()?>transaksi/invoice">Invoice</a></li>
-            <li class="<?=$link=='Print DO'? 'active':''?>"><a class="nav-link" href="<?=base_url()?>laporan/penjualan">Cetak DO</a></li>
+            
+          </ul>
+        </li>
+        <li class="nav-item dropdown <?=$link == 'DO'||$link == 'Piutang'? 'active':''?>">
+          <a href="#" class="nav-link has-dropdown"><i class="fas fa-hotel"></i><span>Laporan </span></a>
+          <ul class="dropdown-menu">
+            <li class="<?=$link=='DO'? 'active':''?>"><a class="nav-link" href="<?=base_url()?>laporan/delivery">DO</a></li>
+            <li class="<?=$link=='Piutang'? 'active':''?>"><a class="nav-link" href="<?=base_url()?>laporan/piutang">Piutang</a></li>
+            
           </ul>
         </li>
       <div class="mt-4 mb-4 p-3 hide-sidebar-mini">

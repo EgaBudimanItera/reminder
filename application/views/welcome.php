@@ -82,7 +82,7 @@
             <div class="card-body">
               <h5 class="card-title"><?=$d->nama_pelanggan?></h5>
               <p class="card-text">
-                Penjualan Tanggal <?=$d->tgl_faktur?> dan akan jatuh tempo pada <?=$d->next_tagih?>
+                Transaksi Tanggal <?=$d->tgl_invoice?> dan akan jatuh tempo pada <?=$d->next_tagih?>
               </p>
               <a href="#" class="btn btn-primary">Detail</a>
             </div>

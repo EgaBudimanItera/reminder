@@ -22,14 +22,14 @@ class Welcome extends CI_Controller {
 		$this->db->from('tb_produk');
 		$get_produk = $this->db->get();
 
-		$this->db->from('tb_order')->where(array('month(tgl_faktur)'=>date('m')));
+		$this->db->from('tb_invoice')->where(array('month(tgl_invoice)'=>date('m')));
 		$get_penjualan = $this->db->get();
 
 		$dateminggudpn=date('Y-m-d',strtotime('+7 days'));
 		
 		$this->db	->select('*')
-					->from('tb_order')
-					->join('tb_pelanggan','tb_order.id_pelanggan=tb_pelanggan.id_pelanggan')
+					->from('tb_invoice')
+					->join('tb_pelanggan','tb_invoice.id_pelanggan=tb_pelanggan.id_pelanggan')
 					->where(array('next_tagih<='=>$dateminggudpn));
 		$get_penjualan_tagih = $this->db->get();
 		

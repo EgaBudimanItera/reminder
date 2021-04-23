@@ -90,5 +90,27 @@
 		return $total;
 	}
 
+	function get_do($id_pelanggan='',$daritanggal,$hinggatanggal){
+		$CI=& get_instance();
+		// $cek_wilayah = $CI->db->get_where('wilayah', array('id_wil' => $id));
+		$cek_do=$CI->db->select('*')
+                ->from('tb_det_do')
+                ->join('tb_do','tb_do.id_do=tb_det_do.id_do')
+                
+                ->join('tb_det_muatan','tb_det_muatan.id_muatan=tb_det_do.id_muatan')
+                ->join('tb_kendaraan','tb_do.id_kendaraan=tb_kendaraan.id_kendaraan')
+                ->join('tb_driver','tb_driver.id_driver=tb_kendaraan.id_driver')
+                ->join('tb_satuan','tb_satuan.id_satuan=tb_det_muatan.id_satuan')
+                ->where(array('tgl_do>='=>$daritanggal,'tgl_do<='=>$hinggatanggal,'tb_do.id_pelanggan'=>$id_pelanggan))
+                ->order_by('tb_do.id_pelanggan','ASC')
+                ->order_by('tb_det_do.id_det_do','ASC')
+                ->get();
+
+		
+		
+		
+		return $cek_do;
+	}
+
 
 ?>
