@@ -46,6 +46,9 @@
 									class="btn btn-outline-danger" id="<?=$row_riwayat->id_invoice?>">
 									<i class="fa fa-eye"></i> Pilih DO</a>
                                     <button class="btn btn-outline-success btn-bayar" id="<?=$row_riwayat->id_invoice?>"><i class="fa fa-money"></i> Bayar Tagihan</button>
+									<a href="<?=base_url()?>transaksi/invoice/cetakInvoice/<?=$row_riwayat->id_invoice?>" 
+									class="btn btn-outline-warning" target="_blank">
+									<i class="fa fa-print"></i> Cetak Invoice</a>
 								</td>
 								
 							</tr>

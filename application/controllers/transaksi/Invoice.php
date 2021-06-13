@@ -212,4 +212,23 @@ class Invoice extends CI_Controller
 			echo json_encode($return);
         }
     }
+
+    public function cetakInvoice($id){
+        $invoice=$this->db->get_where('tb_invoice',array('id_invoice'=>$id))->row();
+        $pelanggan=$this->db->get_where('tb_pelanggan',array('id_pelanggan'=>$invoice->id_pelanggan))->row();
+        $doterpilih=$this->db   ->select('tb_det_do.*,coalesce(sum(tarif*jumlah),0) as subtotal,tgl_do,no_do,tb_pelanggan.*,tb_kendaraan.*')
+                                ->from('tb_det_do')
+                                ->join('tb_do','tb_do.id_do=tb_det_do.id_do')
+                                ->join('tb_kendaraan','tb_do.id_kendaraan=tb_kendaraan.id_kendaraan')
+                                ->join('tb_pelanggan','tb_pelanggan.id_pelanggan=tb_do.id_pelanggan')
+                                ->where(array('tb_do.id_pelanggan'=>$invoice->id_pelanggan,'id_invoice'=>$id))
+                                ->group_by('id_do')
+                                ->get();
+        $data = array(
+            'data'=>$doterpilih,
+            'pelanggan'=>$pelanggan,
+            'invoice'>$invoice,
+        );
+        $this->load->view('transaksi/invoice/report', $data);
+    }
 }

@@ -74,7 +74,7 @@
 				<select name="is_level" id="is_level" class="form-control" required>
 					<option value="">--pilih--</option>
 					<option value="Admin">Admin</option>
-					<option value="Pimpinan">Pimpinan</option>
+					<!-- <option value="Pimpinan">Pimpinan</option> -->
 				</select>
 			</div>
 			
