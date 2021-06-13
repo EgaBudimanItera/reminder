@@ -33,7 +33,10 @@ class Welcome extends CI_Controller {
 					->where(array('next_tagih<='=>$dateminggudpn));
 		$get_penjualan_tagih = $this->db->get();
 		
-
+		$dobelumselesai=$this->db->query("SELECT * FROM `tb_do` JOIN `tb_pelanggan` ON `tb_pelanggan`.`id_pelanggan`=`tb_do`.`id_pelanggan` 
+		WHERE `tb_do`.`status_do` = 'belum' AND `tgl_do` <DATE_SUB(CURDATE(), INTERVAL 7 DAY)");
+		// var_dump($dobelumselesai->result());
+		// die();
 		$data = array(
 			'page' => 'welcome',
 			'link' => 'welcome',
@@ -42,6 +45,7 @@ class Welcome extends CI_Controller {
 			'produk' => $get_produk,
 			'penjualan'=>$get_penjualan,
 			'penjualan_tagih'=>$get_penjualan_tagih,
+			'dobelum'=>$dobelumselesai,
 		);
 		$this->load->view('template/wrapper', $data);
 	}

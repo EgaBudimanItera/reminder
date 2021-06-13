@@ -64,14 +64,45 @@
 
 	<section class="section">
 	  <div class="section-body">
-    <div class="card">
-	        <div class="card-wrap">
-	          <div class="card-header">
-	            <h4>Pelanggan Akan Jatuh Tempo</h4>	            
-			      </div>
-	        </div>
-		</div>
-      <div class="row">
+      <div class="card">
+            <div class="card-wrap">
+              <div class="card-header">
+                <h4>Do Belum Terselesaikan</h4>	            
+              </div>
+            </div>
+            <div class="row">
+        <?php
+          if(!empty($dobelum)){
+
+          foreach($dobelum->result() as $d){
+        ?>
+        <div class="col-sm-6">
+          <div class="card">
+            <div class="card-body">
+              <h5 class="card-title"><?=$d->nama_pelanggan?></h5>
+              <p class="card-text">
+                Transaksi Tanggal <?=$d->tgl_do?> dengan Keterangan <?=$d->keterangan?>
+              </p>
+              <a href="#" class="btn btn-primary">Detail</a>
+            </div>
+          </div>
+        </div>
+        <?php
+          }}
+        ?>
+      </div>
+      </div>
+      
+	  </div>
+    <hr>
+    <div class="section-body">
+      <div class="card">
+            <div class="card-wrap">
+              <div class="card-header">
+                <h4>Pelanggan Akan Jatuh Tempo</h4>	            
+              </div>
+            </div>
+            <div class="row">
         <?php
           if(!empty($penjualan_tagih)){
 
@@ -92,6 +123,8 @@
           }}
         ?>
       </div>
+      </div>
+      
 	  </div>
 	</section>
 </div>
