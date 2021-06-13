@@ -16,18 +16,7 @@
 
         
 
-        <li class="nav-item dropdown <?=$link=='setting_satuan' || $link == 'setting_kategori'  || $link == 'tambah_produk' 
-        ||$link=='print_barcode'? 'active':''?>">
-          <a href="#" class="nav-link has-dropdown"><i class="fas fa-archive"></i><span>Produk</span></a>
-          <ul class="dropdown-menu">
-            <li class="<?=$link=='setting_satuan'? 'active':''?>"><a class="nav-link" href="<?=base_url()?>produk/satuan/satuan">Setting Satuan</a></li>
-            <!-- <li class="<?=$link=='setting_kategori'? 'active':''?>"><a class="nav-link" href="<?=base_url()?>produk/kategori/kategori">Setting Kategori</a></li> -->
-            
-            <li class="<?=$link=='tambah_produk'? 'active':''?>"><a class="nav-link" href="<?=base_url()?>produk/produk">Tambah Produk</a></li>
-            
-            <!-- <li class="<?=$link=='print_barcode'? 'active':''?>"><a class="nav-link" href="<?=base_url()?>produk/produk/viewprintbarcode">Print Barcode</a></li> -->
-          </ul>
-        </li>
+        
         <li class="nav-item dropdown <?=$link=='setting_driver' || $link == 'setting_kendaraan'  ? 'active':''?>">
           <a href="#" class="nav-link has-dropdown"><i class="fas fa-car"></i><span>Transportasi</span></a>
           <ul class="dropdown-menu">

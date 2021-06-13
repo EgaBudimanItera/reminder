@@ -95,6 +95,62 @@
   </div>
 </div>
 
+<div class="modal fade" tabindex="-1" role="dialog" id="modal-tambah-data">
+  <div class="modal-dialog" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title">Data Invoice</h5>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <form id="form-invoice">
+		<div class="modal-body">
+			<div class="form-group">
+				<input type="hidden" name="aksi2" id="aksi2">
+				<input type="hidden" name="id_invoice2" id="id_invoice2">
+				<label for="">No Invoice:</label>
+				<input type="text" name="nomor_invoice2" id="nomor_invoice2" value="<?=$nomor_invoice?>" class="form-control" required>
+			</div>
+            
+            <div class="form-group">
+                <label for="">Tanggal Invoice:</label>
+                <input type="date" name="tgl_invoice2" id="tgl_invoice2" class="form-control" require>
+            </div>
+
+			<div class="form-group">
+                <label for="">Pelanggan:</label>
+                <select name="id_pelanggan2" id="id_pelanggan2" class="form-control">
+					<option value="">--Pilih Pelanggan--</option>
+					<?php
+						foreach($pelanggan->result() as $p){
+					?>
+					<option value="<?=$p->id_pelanggan?>"><?=$p->nama_pelanggan?></option>
+					<?php
+						}
+					?>
+				</select>
+            </div>
+			<div class="form-group">
+                <label for="">Tanggal Jatuh Tempo :</label>
+                <input type="date" name="next_tagih2" id="next_tagih2" class="form-control" require>
+            </div>
+			<div class="form-group">
+                <label for="">Keterangan:</label>
+                <textarea name="keterangan2" id="keterangan2"  rows="10" class="form-control"></textarea>
+            </div>
+			<div class="notif"></div>
+		</div>
+        
+		<div class="modal-footer bg-whitesmoke br">
+			<button type="button" class="btn btn-secondary" data-dismiss="modal">Tidak</button>
+			<button type="submit" class="btn btn-primary">Simpan</button>
+		</div>
+		</form>
+    </div>
+  </div>
+</div>
+
 <div class="modal fade" tabindex="-1" role="dialog" id="modal-hapus-data">
   <div class="modal-dialog" role="document">
     <div class="modal-content">

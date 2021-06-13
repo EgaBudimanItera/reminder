@@ -38,11 +38,11 @@ class Invoice extends CI_Controller
     public function store(){
         $this->db->trans_begin();
         $data_to_save = array(
-            'id_pelanggan'=>$this->input->post('id_pelanggan', true),
-            'nomor_invoice' => $this->input->post('nomor_invoice', true), 
-            'tgl_invoice' => $this->input->post('tgl_invoice', true), 
-            'keterangan' => $this->input->post('keterangan', true), 
-            'next_tagih' => $this->input->post('next_tagih', true), 
+            'id_pelanggan'=>$this->input->post('id_pelanggan2', true),
+            'nomor_invoice' => $this->input->post('nomor_invoice2', true), 
+            'tgl_invoice' => $this->input->post('tgl_invoice2', true), 
+            'keterangan' => $this->input->post('keterangan2', true), 
+            'next_tagih' => $this->input->post('next_tagih2', true), 
         );
         $simpan = $this->db->insert('tb_invoice', $data_to_save);
         

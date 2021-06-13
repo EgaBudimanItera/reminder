@@ -5,7 +5,7 @@
 			e.preventDefault();
 			$('#modal-tambah-data').modal();
 			$('#aksi').val('tambah');
-			$('#form-delivery')[0].reset();
+			$('#form-invoice')[0].reset();
 		});
 
         $(document).on('click', '.btn-bayar', function(e){
@@ -24,6 +24,28 @@
 			var aksi = $('#aksi').val();
             $.ajax({
                 url: '<?=base_url()?>transaksi/invoice/bayarTagihan',
+                data: data,
+                type: 'POST',
+                dataType: 'JSON',
+                success: function(msg){
+                    if(msg.status == 'success'){
+                        $('.notif').html(msg.text);
+                        location.reload();
+                    }else{
+                        $('.notif').html(msg.text);
+                    }
+                }
+            });
+			
+	    });
+
+		$(document).on('submit', '#form-invoice', function(e){
+	    	e.preventDefault();
+	    	var data = $('#form-invoice').serialize();
+			$('.notif').html('Loading...');
+			var aksi = $('#aksi').val();
+            $.ajax({
+                url: '<?=base_url()?>transaksi/invoice/store',
                 data: data,
                 type: 'POST',
                 dataType: 'JSON',
