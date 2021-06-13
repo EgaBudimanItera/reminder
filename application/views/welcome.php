@@ -83,7 +83,7 @@
               <p class="card-text">
                 Transaksi Tanggal <?=$d->tgl_do?> dengan Keterangan <?=$d->keterangan?>
               </p>
-              <a href="#" class="btn btn-primary">Detail</a>
+              <a href="<?=base_url()?>transaksi/delivery" class="btn btn-primary">Detail</a>
             </div>
           </div>
         </div>
@@ -115,7 +115,7 @@
               <p class="card-text">
                 Transaksi Tanggal <?=$d->tgl_invoice?> dan akan jatuh tempo pada <?=$d->next_tagih?>
               </p>
-              <a href="#" class="btn btn-primary">Detail</a>
+              <a href="<?=base_url()?>transaksi/invoice" class="btn btn-primary">Detail</a>
             </div>
           </div>
         </div>

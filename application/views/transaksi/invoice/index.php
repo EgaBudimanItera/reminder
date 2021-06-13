@@ -49,6 +49,7 @@
 									<a href="<?=base_url()?>transaksi/invoice/cetakInvoice/<?=$row_riwayat->id_invoice?>" 
 									class="btn btn-outline-warning" target="_blank">
 									<i class="fa fa-print"></i> Cetak Invoice</a>
+									<button class="btn btn-danger btn-hapus-all" id="<?=$row_riwayat->id_invoice?>"><i class="fa fa-trash"></i> Hapus</button>
 								</td>
 								
 							</tr>
@@ -191,6 +192,27 @@
 		<div class="modal-footer bg-whitesmoke br">
 			<button type="button" class="btn btn-secondary" data-dismiss="modal">Tidak</button>
 			<button type="button" class="btn btn-primary ya-selesai">Ya</button>
+		</div>
+    </div>
+  </div>
+</div>
+
+<div class="modal fade" tabindex="-1" role="dialog" id="modal-hapus-all">
+  <div class="modal-dialog" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title"> Invoice</h5>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+		<div class="modal-body">
+			<p>Apakah anda yakin akan menghapus Invoice ini?</p>
+			<div class="notif"></div>
+		</div>
+		<div class="modal-footer bg-whitesmoke br">
+			<button type="button" class="btn btn-secondary" data-dismiss="modal">Tidak</button>
+			<button type="button" class="btn btn-primary ya-hapus-all">Ya</button>
 		</div>
     </div>
   </div>

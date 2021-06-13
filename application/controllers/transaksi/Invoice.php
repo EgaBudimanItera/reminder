@@ -231,4 +231,27 @@ class Invoice extends CI_Controller
         );
         $this->load->view('transaksi/invoice/report', $data);
     }
+
+    public function hapusAllInvoice(){
+        $this->db->trans_begin();
+        $id_invoice = $this->input->post('id', true);
+        $hapus = $this->db->delete('tb_invoice', array('id_invoice' => $id_invoice));
+        
+        if ($this->db->trans_status() === FALSE){
+            $this->db->trans_rollback();
+            $return = array(
+				'status' => 'failed',
+				'text' => '<div class="alert alert-danger">Data gagal dihapus</div>'
+			);
+			echo json_encode($return);
+        }else {
+            $this->db->trans_commit();
+            $return = array(
+				'status' => 'success',
+				'text' => '<div class="alert alert-success">Data berhasil dihapus</div>'
+			);
+			echo json_encode($return);
+        }
+        
+    }
 }

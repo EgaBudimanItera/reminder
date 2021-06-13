@@ -44,10 +44,11 @@
                                 ?>
                                 
 								<button class="btn btn-success btn-selesai" id="<?=$row_riwayat->id_do?>"><i class="fa fa-edit"></i> Selesaikan DO</button>
-                                <button class="btn btn-danger btn-hapus" id="<?=$row_riwayat->id_do?>"><i class="fa fa-trash"></i> Hapus</button>
+                                
 								<?php
                                     }
                                 ?>
+								<button class="btn btn-danger btn-hapus" id="<?=$row_riwayat->id_do?>"><i class="fa fa-trash"></i> Hapus</button>
 								</td>
 								
 							</tr>

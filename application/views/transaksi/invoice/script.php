@@ -112,6 +112,32 @@
 				});
 			});
 		});
+
+		$(document).on('click', '.btn-hapus-all', function(e){
+			e.preventDefault();
+			var id = $(this).attr('id');
+            
+			$('#modal-hapus-all').modal();
+			
+			$(document).on('click', '.ya-hapus-all', function(e){
+				e.preventDefault();
+				$('.notif').html('Loading...');
+				$.ajax({
+					url: '<?=base_url()?>transaksi/invoice/hapusAllInvoice',
+					data: 'id='+id,
+					type: 'POST',
+					dataType: 'JSON',
+					success: function(msg){
+						if(msg.status == 'success'){
+							$('.notif').html(msg.text);
+							location.reload();
+						}else{
+							$('.notif').html(msg.text);
+						}
+					}
+				});
+			});
+		});
 		
 	});
 </script>
